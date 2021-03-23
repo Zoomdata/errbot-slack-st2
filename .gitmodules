@@ -3,4 +3,4 @@
 	url = https://github.com/tkit/errbot-plugin-webserverconfiguration.git
 [submodule "plugins/err-stackstorm"]
 	path = plugins/err-stackstorm
-	url = https://github.com/fmnisme/err-stackstorm.git
+	url = https://github.com/nzlosh/err-stackstorm.git

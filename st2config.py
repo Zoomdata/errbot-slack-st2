@@ -28,15 +28,21 @@ globals().update({name: ERRBOT_DICT[name] for name in ERRBOT_SETTINGS})
 
 ST2_HOST = os.environ['ST2_HOST']
 
-# err-stackstorm's plugin settings
+
 STACKSTORM = {
+    'auth_url': 'http://{}/auth/v1'.format(ST2_HOST),
+    'api_url': 'http://{}/api/v1'.format(ST2_HOST),
+    'stream_url': 'http://{}/stream/v1'.format(ST2_HOST),
+    'route_key': 'errbot',
+    'plugin_prefix': 'st2',
+    'verify_cert': False,
+    'secrets_store': 'cleartext',
     'api_auth': {
-        'key': os.environ['ST2_API_KEY'],
+        'apikey': os.environ['ST2_API_KEY']
     },
-    'auth_url': 'https://{}/auth/v1'.format(ST2_HOST),
-    'api_url': 'https://{}/api/v1'.format(ST2_HOST),
-    'stream_url': 'https://{}/stream/v1'.format(ST2_HOST),
-    'verify_cert': False,  # ST2 uses self-signed cert
-    # Interval for Errbot to refresh a list of available action aliases.
-    'timer_update': 900,  # Unit: seconds.
+    'rbac_auth': {
+        'standalone': {},
+    },
+    'timer_update': 900, #  Unit: second.  Interval to check the user token is still valid.
 }
+
